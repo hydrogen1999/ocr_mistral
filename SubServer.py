@@ -1,3 +1,5 @@
+### This is a subserver that will be used to be act like a client to send file to Kafka
+
 from KAFKA import KafkaEngine
 from MINIO import MinioEngine
 kafka_engine = KafkaEngine()
