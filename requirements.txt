@@ -1,0 +1,7 @@
+mistralai==1.6.0
+python-dotenv==1.1.0
+python-datauri==3.0.2
+loguru==0.7.3
+minio==7.2.15
+kafka-python==2.1.4
+PyYAML==6.0.1

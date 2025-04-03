@@ -1,0 +1,7 @@
+server:
+  minio:
+    endpoint: localhost:9000
+  
+  kafka:
+    host: ["localhost:9092"]
+    topic: ocr_topic
