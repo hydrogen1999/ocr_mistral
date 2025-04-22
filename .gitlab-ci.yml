@@ -1,0 +1,37 @@
+stages:
+  - init
+  - package_image
+  - deploy_dev
+
+init:
+  stage: init
+  script:
+    - echo "init"
+  tags:
+    - exec-shell
+  only:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[build\]/
+
+package_image:
+  stage: package_image
+  script:
+    - export VERSION=$(cat .docker/VERSION)
+    - docker build -f .docker/Dockerfile -t $VERSION .
+    - docker image tag $VERSION $VERSION
+    - docker image push $VERSION
+  tags:
+    - exec-shell
+  only:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[build\]/
+
+deploy_dev:
+  stage: deploy_dev
+  script:
+    - echo "Deploy dev"
+  tags:
+    - exec-shell
+  only:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[build\]/
